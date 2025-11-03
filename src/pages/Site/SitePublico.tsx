@@ -28,7 +28,7 @@ export default function SitePublico() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Chamar imediatamente
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
