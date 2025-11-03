@@ -1,9 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAdvogado } from '../../context/AdvogadoContext';
 import { atividadesJuridicas, categoriasAtividades } from '../../data/atividadesJuridicas';
 import './AdminDashboard.css';
 
 export default function AdminDashboard() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Verificar se está autenticado
+    const isAuthenticated = sessionStorage.getItem('adminAuthenticated');
+    if (!isAuthenticated) {
+      navigate('/admin/login');
+    }
+  }, [navigate]);
   const { configuracao, atualizarConfiguracao, toggleAtividade } = useAdvogado();
   const [categoriaFiltro, setCategoriaFiltro] = useState<string>('Todas');
 
