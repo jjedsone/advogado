@@ -10,17 +10,22 @@ export default function SitePublico() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
-      
-      // Verificar seções visíveis para animações
-      const sections = document.querySelectorAll('[data-section]');
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const sectionId = section.getAttribute('data-section') || '';
-        if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
-          setVisibleSections((prev) => new Set([...prev, sectionId]));
-        }
-      });
+      try {
+        setScrollY(window.scrollY);
+        
+        // Verificar seções visíveis para animações
+        const sections = document.querySelectorAll('[data-section]');
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          const sectionId = section.getAttribute('data-section') || '';
+          if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
+            setVisibleSections((prev) => new Set([...prev, sectionId]));
+          }
+        });
+      } catch (error) {
+        // Ignorar erros de extensões do navegador
+        console.debug('Erro de scroll ignorado:', error);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
