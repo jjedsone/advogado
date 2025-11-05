@@ -1,0 +1,81 @@
+=============================================================================
+  GUIA RÁPIDO - DEPLOY NO FIREBASE
+=============================================================================
+
+PROJETO FIREBASE: advogados-150b3
+URL DO CONSOLE: https://console.firebase.google.com/u/0/project/advogados-150b3/overview
+
+=============================================================================
+  PASSO 1: FAZER LOGIN NO FIREBASE
+=============================================================================
+
+Execute no terminal:
+  firebase login
+
+Isso abrirá uma janela no navegador para você fazer login com sua conta Google.
+
+=============================================================================
+  PASSO 2: VERIFICAR O PROJETO
+=============================================================================
+
+O projeto já está configurado no arquivo .firebaserc:
+  - Projeto ID: advogados-150b3
+
+Para verificar se está conectado ao projeto correto:
+  firebase projects:list
+
+=============================================================================
+  PASSO 3: FAZER BUILD DO PROJETO
+=============================================================================
+
+Execute:
+  npm run build
+
+Isso criará a pasta dist/ com os arquivos otimizados para produção.
+
+=============================================================================
+  PASSO 4: FAZER DEPLOY
+=============================================================================
+
+Execute:
+  firebase deploy
+
+Ou apenas para o hosting:
+  firebase deploy --only hosting
+
+=============================================================================
+  PASSO 5: ACESSAR O SITE
+=============================================================================
+
+Após o deploy, você receberá uma URL como:
+  - https://advogados-150b3.web.app
+  - https://advogados-150b3.firebaseapp.com
+
+=============================================================================
+  CONFIGURAR BACKEND (FIRESTORE) - OPCIONAL
+=============================================================================
+
+1. Acesse o Console do Firebase
+2. Vá em "Firestore Database"
+3. Clique em "Criar banco de dados"
+4. Escolha modo de produção ou teste
+5. Escolha a localização (ex: southamerica-east1 para São Paulo)
+
+Para integrar o Firestore ao invés do localStorage, veja o arquivo:
+  DEPLOY_FIREBASE.md
+
+=============================================================================
+  COMANDOS ÚTEIS
+=============================================================================
+
+Ver status do deploy:
+  firebase hosting:sites:list
+
+Ver logs do deploy:
+  firebase deploy --only hosting --debug
+
+Fazer deploy apenas do hosting:
+  firebase deploy --only hosting
+
+=============================================================================
+

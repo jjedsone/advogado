@@ -110,10 +110,10 @@ export default function ModalContato({ isOpen, onClose, onSuccess }: ModalContat
       novosErros.sexo = 'Selecione o sexo';
     }
 
-    if (!formData.idade || formData.idade === '') {
+    if (formData.idade === '' || formData.idade === null || formData.idade === undefined || (typeof formData.idade === 'number' && formData.idade === 0)) {
       novosErros.idade = 'Idade é obrigatória';
     } else {
-      const idadeNum = Number(formData.idade);
+      const idadeNum = typeof formData.idade === 'number' ? formData.idade : Number(formData.idade);
       if (isNaN(idadeNum) || idadeNum < 1 || idadeNum > 120) {
         novosErros.idade = 'Idade inválida (entre 1 e 120 anos)';
       }
