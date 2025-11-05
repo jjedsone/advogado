@@ -17,3 +17,13 @@ export interface ConfiguracaoAdvogado {
   atividadesSelecionadas: string[]; // IDs das atividades selecionadas
 }
 
+export interface ClienteFormulario {
+  id: string;
+  nome: string;
+  telefone: string;
+  sexo: 'masculino' | 'feminino' | 'outro' | '';
+  idade: number | '';
+  situacao: string;
+  dataContato: string;
+}
+

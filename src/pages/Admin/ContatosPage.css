@@ -1,0 +1,519 @@
+.contatos-page {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.contatos-header {
+  margin-bottom: 2rem;
+}
+
+.contatos-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.contatos-header h2 {
+  font-size: 2rem;
+  color: white;
+  margin: 0;
+  font-weight: 700;
+}
+
+.contatos-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.stat-item {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+.stat-item strong {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.contatos-filtros {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.busca-container {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+}
+
+.busca-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.busca-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.busca-input:focus {
+  outline: none;
+  border-color: white;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.busca-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
+.filtro-status {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filtro-status button {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filtro-status button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.filtro-status button.active {
+  background: white;
+  color: #667eea;
+  border-color: white;
+}
+
+.contatos-layout {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 2rem;
+  min-height: 600px;
+}
+
+.contatos-lista {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 300px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contatos-vazio {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #999;
+}
+
+.contatos-vazio p {
+  font-size: 3rem;
+  margin: 0.5rem 0;
+}
+
+.contatos-vazio p:not(:first-child) {
+  font-size: 1.1rem;
+}
+
+.contatos-vazio-hint {
+  font-size: 0.9rem !important;
+  color: #666;
+}
+
+.contato-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.contato-card:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contato-card.selected {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.contato-card.selected .contato-telefone,
+.contato-card.selected .contato-situacao-preview,
+.contato-card.selected .contato-data {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.contato-card-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.contato-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.contato-card.selected .contato-avatar {
+  background: white;
+  color: #667eea;
+}
+
+.contato-info-header {
+  flex: 1;
+  min-width: 0;
+}
+
+.contato-info-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contato-card.selected .contato-info-header h3 {
+  color: white;
+}
+
+.contato-data {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0.25rem 0 0;
+}
+
+.contato-card-body {
+  margin-bottom: 0.75rem;
+}
+
+.contato-telefone {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.contato-situacao-preview {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0.5rem 0 0;
+}
+
+.contato-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.contato-card.selected .badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.contato-detalhes {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 2rem;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.detalhes-vazio {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #999;
+}
+
+.detalhes-vazio p:first-child {
+  font-size: 3rem;
+  margin: 0.5rem 0;
+}
+
+.detalhes-vazio p:last-child {
+  font-size: 1.1rem;
+}
+
+.detalhes-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  position: relative;
+}
+
+.detalhes-avatar-large {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.detalhes-titulo {
+  flex: 1;
+}
+
+.detalhes-titulo h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: 700;
+}
+
+.detalhes-data {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+}
+
+.btn-excluir {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-excluir:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+.detalhes-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.info-item label {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-item span {
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.info-value-with-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.info-value-with-actions span {
+  flex: 1;
+}
+
+.info-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-action {
+  background: #f0f0f0;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-action:hover {
+  background: #667eea;
+  transform: scale(1.1);
+}
+
+.situacao-texto {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.detalhes-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e0e0e0;
+}
+
+.btn-whatsapp,
+.btn-ligar {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  background: #128c7e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-ligar {
+  background: #667eea;
+  color: white;
+}
+
+.btn-ligar:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+@media (max-width: 1024px) {
+  .contatos-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contato-detalhes {
+    position: static;
+    max-height: none;
+  }
+
+  .contatos-lista {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contatos-page {
+    padding: 1rem;
+  }
+
+  .contatos-header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contatos-filtros {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .busca-container {
+    width: 100%;
+  }
+
+  .filtro-status {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .filtro-status button {
+    flex: 1;
+  }
+
+  .detalhes-actions {
+    flex-direction: column;
+  }
+}
+

@@ -23,12 +23,21 @@ const configuracaoInicial: ConfiguracaoAdvogado = {
 
 export function AdvogadoProvider({ children }: { children: ReactNode }) {
   const [configuracao, setConfiguracao] = useState<ConfiguracaoAdvogado>(() => {
-    const saved = localStorage.getItem(CONFIG_STORAGE_KEY);
-    return saved ? JSON.parse(saved) : configuracaoInicial;
+    try {
+      const saved = localStorage.getItem(CONFIG_STORAGE_KEY);
+      return saved ? JSON.parse(saved) : configuracaoInicial;
+    } catch (error) {
+      console.error('Erro ao carregar configuração do localStorage:', error);
+      return configuracaoInicial;
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify(configuracao));
+    try {
+      localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify(configuracao));
+    } catch (error) {
+      console.error('Erro ao salvar configuração no localStorage:', error);
+    }
   }, [configuracao]);
 
   const atualizarConfiguracao = (novaConfig: Partial<ConfiguracaoAdvogado>) => {
